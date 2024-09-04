@@ -2,7 +2,7 @@ using Market.Sales.Domain.Interfaces;
 using Market.Sales.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Market.Sales.CrossCutting.Configs
+namespace Market.Sales.IoC.Configuration
 {
     public static class ConfigDependencyInjection
     {

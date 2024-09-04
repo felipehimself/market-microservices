@@ -1,4 +1,4 @@
-using Market.Sales.CrossCutting.Configs;
+using Market.Sales.IoC.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

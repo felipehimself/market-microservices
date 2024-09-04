@@ -2,7 +2,7 @@ using Market.Sales.Application.Interfaces;
 using Market.Sales.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Market.Sales.CrossCutting.Configs
+namespace Market.Sales.IoC.Configuration
 {
     public static class ConfigServices
     {

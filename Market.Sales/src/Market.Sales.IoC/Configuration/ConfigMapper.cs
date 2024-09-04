@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using Market.Sales.CrossCutting.Profiles;
+using Market.Sales.IoC.Profiles;
 
-namespace Market.Sales.CrossCutting.Configs
+namespace Market.Sales.IoC.Configuration
 {
     public class ConfigMapper
     {
