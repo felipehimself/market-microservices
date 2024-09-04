@@ -1,4 +1,4 @@
-using Market.Inventory.CrossCutting.Configs;
+using Market.Inventory.IoC.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

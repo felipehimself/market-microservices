@@ -1,7 +1,7 @@
 using AutoMapper;
-using Market.Inventory.CrossCutting.Profiles;
+using Market.Inventory.IoC.Profiles;
 
-namespace Market.Inventory.CrossCutting.Configs
+namespace Market.Inventory.IoC.Configuration
 {
     public class ConfigMapper
     {

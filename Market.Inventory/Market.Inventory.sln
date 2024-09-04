@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Market.Inventory.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Market.Inventory.Infrastructure", "src\Market.Inventory.Infrastructure\Market.Inventory.Infrastructure.csproj", "{F1315138-1AD6-4D26-B22A-34FE6882D3F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Market.Inventory.IoC", "src\Market.Inventory.IoC\Market.Inventory.IoC.csproj", "{D89F9B89-15BA-4B8F-808C-BFD45CE19CB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{F1315138-1AD6-4D26-B22A-34FE6882D3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1315138-1AD6-4D26-B22A-34FE6882D3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1315138-1AD6-4D26-B22A-34FE6882D3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89F9B89-15BA-4B8F-808C-BFD45CE19CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89F9B89-15BA-4B8F-808C-BFD45CE19CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89F9B89-15BA-4B8F-808C-BFD45CE19CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89F9B89-15BA-4B8F-808C-BFD45CE19CB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{77CE7C9B-F5EA-410D-94E1-4F45E449C634} = {D59E6279-0BC9-4FEF-99F9-9121CBE638E0}
@@ -51,5 +57,6 @@ Global
 		{80878181-650F-4825-8FCB-61F791A70EE7} = {D59E6279-0BC9-4FEF-99F9-9121CBE638E0}
 		{3178FC40-CDF0-4B50-A3A6-7029DDBD82FE} = {D59E6279-0BC9-4FEF-99F9-9121CBE638E0}
 		{F1315138-1AD6-4D26-B22A-34FE6882D3F7} = {D59E6279-0BC9-4FEF-99F9-9121CBE638E0}
+		{D89F9B89-15BA-4B8F-808C-BFD45CE19CB2} = {D59E6279-0BC9-4FEF-99F9-9121CBE638E0}
 	EndGlobalSection
 EndGlobal

@@ -2,7 +2,7 @@ using Market.Inventory.Infrastructure.Repositories;
 using Market.Inventory.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Market.Inventory.CrossCutting.Configs
+namespace Market.Inventory.IoC.Configuration
 {
     public static class ConfigDependencyInjection
     {

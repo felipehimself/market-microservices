@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Market.Inventory.CrossCutting.Configs
+namespace Market.Inventory.IoC.Configuration
 {
     public static class ConfigConnectionString
     {

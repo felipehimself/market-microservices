@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Market.Inventory.CrossCutting\Market.Inventory.CrossCutting.csproj" />
+    <ProjectReference Include="..\Market.Inventory.IoC\Market.Inventory.IoC.csproj" />
   </ItemGroup>
 
 </Project>

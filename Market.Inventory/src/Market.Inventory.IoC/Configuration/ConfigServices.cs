@@ -3,7 +3,7 @@ using Market.Inventory.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 
-namespace Market.Inventory.CrossCutting.Configs
+namespace Market.Inventory.IoC.Configuration
 {
     public static class ConfigServices
     {
