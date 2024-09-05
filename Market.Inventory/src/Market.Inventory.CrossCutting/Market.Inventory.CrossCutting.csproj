@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Market.Inventory.Infrastructure\Market.Inventory.Infrastructure.csproj" />
-    <ProjectReference Include="..\Market.Inventory.Application\Market.Inventory.Application.csproj" />
     <ProjectReference Include="..\Market.Inventory.Domain\Market.Inventory.Domain.csproj" />
   </ItemGroup>
 
