@@ -11,13 +11,15 @@ namespace Market.Sales.Application.Services
         private readonly ISaleRepository _repository = repository;
         private readonly IMapper _mapper = mapper;
 
-        public async Task CreateSaleAsync(SaleCreateDto sale)
+        public async Task<SaleReadDto> CreateSaleAsync(SaleCreateDto sale)
         {
             
             var entity = _mapper.Map<Sale>(sale);
             
             await _repository.CreateSaleAsync(entity);
             await _repository.SaveChangesAsync();
+
+            return _mapper.Map<SaleReadDto>(entity);
 
         }
 
