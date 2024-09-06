@@ -15,6 +15,8 @@ builder.Services.AddRouting(options =>
     options.LowercaseUrls = true;
     options.LowercaseQueryStrings = true;
 });
+builder.Services.ConfigRabbitMQServices(builder.Configuration);
+
 
 var app = builder.Build();
 

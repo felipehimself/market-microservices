@@ -6,6 +6,10 @@
     <ProjectReference Include="..\Market.Sales.Domain\Market.Sales.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMq" Version="8.2.5" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
