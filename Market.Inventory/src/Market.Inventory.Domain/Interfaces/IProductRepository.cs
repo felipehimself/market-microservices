@@ -5,12 +5,12 @@ namespace Market.Inventory.Domain.Interfaces
 {
     public interface IProductRepository
     {
-        Task <bool> SaveChangesAsync();
-        Task UpdateProductAsync();
+        bool SaveChanges();
+        void UpdateProductInInventory(Guid id, int quantity);
 
-        Task<Product> CreateProductAsync(Product product);
-        Task<IEnumerable<Product>> GetProductsAsync();
+        Product CreateProduct(Product product);
+        IEnumerable<Product> GetProducts();
 
-        Task<Product?> GetProductAsync(Guid id);
+        Product? GetProduct(Guid id);
     }
 }

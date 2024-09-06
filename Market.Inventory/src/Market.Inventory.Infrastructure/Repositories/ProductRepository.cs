@@ -10,38 +10,49 @@ namespace Market.Inventory.Infrastructure.Repositories
 
         private readonly AppDbContext _context = context;
 
-        public async Task<Product> CreateProductAsync(Product product)
+        public Product CreateProduct(Product product)
         {
             ArgumentNullException.ThrowIfNull(product);
 
             product.CreatedAt = DateTime.UtcNow;
 
-            await _context.Products.AddAsync(product);
+            _context.Products.Add(product);
 
             return product;
 
         }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync()
+        public IEnumerable<Product> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            return [.. _context.Products];
         }
 
 
-        public async Task UpdateProductAsync()
+        public void UpdateProductInInventory(Guid id, int quantity)
         {
-            throw new NotImplementedException();
+
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+
+            ArgumentNullException.ThrowIfNull(product);
+
+            var newQuantity = product.Quantity - quantity;
+
+            product.Quantity = newQuantity;
+            product.UpdatedAt = DateTime.UtcNow;
+
+            _context.Products.Update(product);
+
         }
 
 
-        public async Task<Product?> GetProductAsync(Guid id)
+        public Product? GetProduct(Guid id)
         {
-            return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            return _context.Products.FirstOrDefault(p => p.Id == id);
         }
-        
-        public async Task<bool> SaveChangesAsync()
+
+        public bool SaveChanges()
         {
-           return await _context.SaveChangesAsync() >= 0;
+            return _context.SaveChanges() >= 0;
 
         }
 

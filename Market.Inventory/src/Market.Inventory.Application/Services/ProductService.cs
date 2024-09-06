@@ -14,38 +14,45 @@ namespace Market.Inventory.Application.Services
         private readonly ILoggerService<ProductService> _logger = logger;
 
 
-        public async Task<ProductReadDto> CreateProductAsync(ProductCreateDto productDto)
+        public ProductReadDto CreateProduct(ProductCreateDto productDto)
         {
 
-        _logger.LogInformation("Creating Product");
+            _logger.LogInformation("Creating Product");
 
-        var entity = _mapper.Map<Product>(productDto);
-           
-        await _repository.CreateProductAsync(entity);
-        await _repository.SaveChangesAsync();
+            var entity = _mapper.Map<Product>(productDto);
 
-        return  _mapper.Map<ProductReadDto>(entity);
-           
+            _repository.CreateProduct(entity);
+            _repository.SaveChanges();
+
+            return _mapper.Map<ProductReadDto>(entity);
+
         }
 
-        public async Task<ProductReadDto> GetProductAsync(Guid id)
+        public ProductReadDto GetProduct(Guid id)
         {
             _logger.LogInformation("Getting Product");
 
-            var entity = await _repository.GetProductAsync(id);
+            var entity = _repository.GetProduct(id);
 
             if (entity == null) _logger.LogInformation("Not found, product is null");
 
             return _mapper.Map<ProductReadDto>(entity);
         }
 
-        public async Task<IEnumerable<ProductReadDto>> GetProductsAsync()
-        {   
+        public IEnumerable<ProductReadDto> GetProducts()
+        {
             _logger.LogInformation("Getting Products");
 
-            var products = await _repository.GetProductsAsync();
+            var products = _repository.GetProducts();
 
             return _mapper.Map<IEnumerable<ProductReadDto>>(products);
+
+        }
+
+        public void UpdateProductInInventory(Guid id, int quantity)
+        {
+            _repository.UpdateProductInInventory(id, quantity);
+            _repository.SaveChanges();
 
         }
     }

@@ -4,10 +4,12 @@ namespace Market.Inventory.Application.Interfaces
 {
     public interface IProductService
     {
-        Task<ProductReadDto> CreateProductAsync(ProductCreateDto productDto);
+        ProductReadDto CreateProduct(ProductCreateDto productDto);
 
-        Task<ProductReadDto> GetProductAsync(Guid id);
+        ProductReadDto GetProduct(Guid id);
 
-        Task<IEnumerable<ProductReadDto>> GetProductsAsync();
+        IEnumerable<ProductReadDto> GetProducts();
+
+        void UpdateProductInInventory(Guid id, int quantity);
     }
 }

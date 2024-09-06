@@ -8,32 +8,33 @@ namespace Market.Inventory.Api.Controllers
     [Route("api/[controller]")]
     public class ProductsController(IProductService productService) : ControllerBase
     {
-            private readonly IProductService _productService = productService;
+        private readonly IProductService _productService = productService;
 
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductReadDto>> GetProducts()
+        {
 
-            [HttpGet]
-            public async Task<ActionResult<IEnumerable<ProductReadDto>>> GetAll() 
-            {
-                
-                return Ok(await _productService.GetProductsAsync());
+            Console.WriteLine("Get Products being called!");
 
-            }
+            return Ok(_productService.GetProducts());
 
-            [HttpGet("{id}", Name = "GetProduct")]
-            public async Task<ActionResult<ProductReadDto>> GetProduct(Guid id)
-            {   
-                return Ok(await _productService.GetProductAsync(id));
-            }
+        }
 
-            [HttpPost]
-            public async Task<ActionResult<ProductReadDto>> CreateProduct(ProductCreateDto product)
-            {
+        [HttpGet("{id}", Name = "GetProduct")]
+        public ActionResult<ProductReadDto> GetProduct(Guid id)
+        {
+            return Ok(_productService.GetProduct(id));
+        }
 
-                var created = await _productService.CreateProductAsync(product);
+        [HttpPost]
+        public ActionResult<ProductReadDto> CreateProduct(ProductCreateDto product)
+        {
 
-                return CreatedAtRoute(nameof(GetProduct), new { Id = created.Id }, created); 
+            var created = _productService.CreateProduct(product);
 
-            }
+            return CreatedAtRoute(nameof(GetProduct), new { Id = created.Id }, created);
+
+        }
 
     }
 }
