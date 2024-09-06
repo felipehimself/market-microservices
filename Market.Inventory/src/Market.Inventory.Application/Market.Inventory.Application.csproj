@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Market.Inventory.Domain\Market.Inventory.Domain.csproj" />
+    <ProjectReference Include="..\Market.Inventory.CrossCutting\Market.Inventory.CrossCutting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
