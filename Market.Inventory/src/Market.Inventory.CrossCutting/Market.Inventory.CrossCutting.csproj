@@ -9,10 +9,11 @@
   <ItemGroup>
 
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Market.Inventory.Infrastructure\Market.Inventory.Infrastructure.csproj" />
     <ProjectReference Include="..\Market.Inventory.Domain\Market.Inventory.Domain.csproj" />
   </ItemGroup>
 

@@ -1,3 +1,4 @@
+using Market.Inventory.Api.SeedData;
 using Market.Inventory.IoC.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+SeedData.Seeder(app, isProduction);
 
 app.UseHttpsRedirection();
 

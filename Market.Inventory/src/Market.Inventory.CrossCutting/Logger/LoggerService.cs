@@ -17,23 +17,23 @@ namespace Market.Inventory.CrossCutting.Logger
 
             if (exception != null)
             {
-                _logger.LogError(exception, "{Message}",  message);
+                _logger.LogError(exception, "{Message}", message);
             }
             else
             {
-                _logger.LogError("{Message}",  message);
+                _logger.LogError("{Message}", message);
             }
 
         }
 
         public void LogInformation(string message)
         {
-             _logger.LogInformation("{Message}",  message);
+            _logger.LogInformation("{Message}", message);
         }
 
         public void LogWarning(string message)
         {
-             _logger.LogWarning("{Message}",  message);
+            _logger.LogWarning("{Message}", message);
         }
     }
 }

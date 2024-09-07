@@ -14,8 +14,6 @@ namespace Market.Inventory.Api.Controllers
         public ActionResult<IEnumerable<ProductReadDto>> GetProducts()
         {
 
-            Console.WriteLine("Get Products being called!");
-
             return Ok(_productService.GetProducts());
 
         }
