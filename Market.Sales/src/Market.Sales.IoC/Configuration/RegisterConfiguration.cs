@@ -1,4 +1,3 @@
-
 using MassTransit;
 using Market.Sales.Application.Interfaces;
 using Market.Sales.Application.Services;
@@ -41,25 +40,36 @@ namespace Market.Sales.IoC.Configuration
 
         }
 
-        public static void ConfigRabbitMQ(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigRabbitMQ(this IServiceCollection services, IConfiguration configuration, bool isProduction)
         {
-            string rabbitMQHost = configuration["RabbitMQHost"]!;
-            string rabbitMQPort = configuration["RabbitMQPort"]!;
+            var rabbitMQHost = "";
 
-            var rabbitHost = "amqp://" + rabbitMQHost + ":" + int.Parse(rabbitMQPort); ;
+            if (isProduction)
+            {
+                rabbitMQHost = Environment.GetEnvironmentVariable("RabbitMQHost")!;
+            }
+            else
+            {
+                rabbitMQHost = configuration["RabbitMQHost"]!;
+            }
+
+
+            string rabbitMQPort = configuration["RabbitMQPort"]!;
+            string rabbitMQUser = configuration["RabbitMQUser"]!;
+            string RabbitMQPassword = configuration["RabbitMQPassword"]!;
+
+            var host = "amqp://" + rabbitMQHost + ":" + int.Parse(rabbitMQPort);
+
+            Console.WriteLine("HOST: " + host);
+
             services.AddMassTransit(bussConfigurator =>
             {
                 bussConfigurator.UsingRabbitMq((ctx, cfg) =>
                 {
-                    // cfg.Message<SaleCreatedEvent>(x =>
-                    // {
-                    //     x.SetEntityName("sale-created-event-exchange");
-                    // });
-
-                    cfg.Host(rabbitHost, h =>
+                    cfg.Host(host, h =>
                     {
-                        h.Username("guest");
-                        h.Password("guest");
+                        h.Username(rabbitMQUser);
+                        h.Password(RabbitMQPassword);
                     });
                     cfg.ConfigureEndpoints(ctx);
                 });
@@ -71,7 +81,6 @@ namespace Market.Sales.IoC.Configuration
                 .AddScoped<ISaleService, SaleService>()
                 .AddScoped<IRabbitMQProvider, RabbitMQProvider>()
                 .AddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
-            // services.AddSingleton(typeof(ILoggerService<>), typeof(LoggerService<>));
             return services;
         }
 

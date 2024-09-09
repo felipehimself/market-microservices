@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sales-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: sales-service
+  ports:
+  - name: sales-service
+    protocol: TCP
+    port: 8080
+    targetPort: 8080

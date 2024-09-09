@@ -1,6 +1,4 @@
-
 using Market.FakeForMassTransit.Application.Events;
-
 using Market.Inventory.Application.Interfaces;
 using Market.Inventory.CrossCutting.Logger;
 using MassTransit;

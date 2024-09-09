@@ -12,7 +12,7 @@ builder.Services
     .ConfigAppConnectionString(builder.Configuration, isProduction)
     .ConfigAppServices()
     .ConfigAppDependencyInjection()
-    .ConfigRabbitMQ(builder.Configuration);
+    .ConfigRabbitMQ(builder.Configuration, isProduction);
 
 builder.Services.AddSingleton(ConfigMapper.ConfigAppMapper());
 
