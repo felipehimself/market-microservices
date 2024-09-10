@@ -21,3 +21,18 @@ spec:
             secretKeyRef:
               name: rabbitmq-secret
               key: RabbitMQHost
+        - name: RabbitMQPort
+          valueFrom:
+            secretKeyRef:
+              name: rabbitmq-secret
+              key: RabbitMQPort
+        - name: RabbitMQUser
+          valueFrom:
+            secretKeyRef:
+              name: rabbitmq-secret
+              key: RabbitMQUser
+        - name: RabbitMQPassword
+          valueFrom:
+            secretKeyRef:
+              name: rabbitmq-secret
+              key: RabbitMQPassword

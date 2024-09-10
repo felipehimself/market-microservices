@@ -40,27 +40,16 @@ namespace Market.Sales.IoC.Configuration
 
         }
 
-        public static void ConfigRabbitMQ(this IServiceCollection services, IConfiguration configuration, bool isProduction)
+        public static void ConfigRabbitMQ(this IServiceCollection services, IConfiguration configuration)
         {
-            var rabbitMQHost = "";
-
-            if (isProduction)
-            {
-                rabbitMQHost = Environment.GetEnvironmentVariable("RabbitMQHost")!;
-            }
-            else
-            {
-                rabbitMQHost = configuration["RabbitMQHost"]!;
-            }
-
-
-            string rabbitMQPort = configuration["RabbitMQPort"]!;
-            string rabbitMQUser = configuration["RabbitMQUser"]!;
-            string RabbitMQPassword = configuration["RabbitMQPassword"]!;
+            var rabbitMQHost = Environment.GetEnvironmentVariable("RabbitMQHost") ?? configuration["RabbitMQHost"]!;
+            var rabbitMQPort = Environment.GetEnvironmentVariable("RabbitMQPort") ?? configuration["RabbitMQPort"]!;
+            var rabbitMQUser = Environment.GetEnvironmentVariable("RabbitMQUser") ?? configuration["RabbitMQUser"]!;
+            var RabbitMQPassword = Environment.GetEnvironmentVariable("RabbitMQPassword") ?? configuration["RabbitMQPassword"]!;
 
             var host = "amqp://" + rabbitMQHost + ":" + int.Parse(rabbitMQPort);
 
-            Console.WriteLine("HOST: " + host);
+            Console.WriteLine("HOST ADDRESS: " + host);
 
             services.AddMassTransit(bussConfigurator =>
             {
