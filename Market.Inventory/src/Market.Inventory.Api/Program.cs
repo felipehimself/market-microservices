@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 var isProduction = builder.Environment.IsProduction();
 
 builder.Services
-    .ConfigAppConnectionString(builder.Configuration, isProduction)
+    .ConfigAppConnectionString()
     .ConfigAppServices()
     .ConfigAppDependencyInjection()
     .ConfigRabbitMQ(builder.Configuration);

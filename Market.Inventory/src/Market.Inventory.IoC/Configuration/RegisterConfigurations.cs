@@ -14,14 +14,14 @@ namespace Market.Inventory.IoC.Configuration
 {
     public static class RegisterConfigurations
     {
-        public static IServiceCollection ConfigAppConnectionString(this IServiceCollection services, IConfiguration config, bool isProduction)
+        public static IServiceCollection ConfigAppConnectionString(this IServiceCollection services)
         {
 
-            if (isProduction)
-            {
-                var connectionString = config.GetConnectionString("MktIneventoryConnectionString");
-                services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
+            var connectionString = Environment.GetEnvironmentVariable("MktMSConnStr");
 
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
             }
             else
             {

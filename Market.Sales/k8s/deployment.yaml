@@ -36,3 +36,8 @@ spec:
             secretKeyRef:
               name: rabbitmq-secret
               key: RabbitMQPassword
+        - name: MktMSConnStr
+          valueFrom:
+            secretKeyRef:
+              name: sqlserver-secret
+              key: MktMSConnStr

@@ -15,19 +15,19 @@ namespace Market.Sales.IoC.Configuration
 {
     public static class RegisterConfigurations
     {
-        public static IServiceCollection ConfigAppConnectionString(this IServiceCollection services, IConfiguration config, bool isProduction)
+        public static IServiceCollection ConfigAppConnectionString(this IServiceCollection services)
         {
+            var connectionString = Environment.GetEnvironmentVariable("MktMSConnStr");
 
-            if (isProduction)
+            if (!string.IsNullOrEmpty(connectionString))
             {
-                var connectionString = config.GetConnectionString("MktIneventoryConnectionString");
                 services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
-
             }
             else
             {
                 services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemDb"));
             }
+
 
             return services;
 
