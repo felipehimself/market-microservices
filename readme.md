@@ -4,6 +4,17 @@ This is a microservices project which consists in making two services exchange m
 
 For simplicity both microservices are in the same repository, but in a real world project them could apart.
 
+# Table of Contents
+
+- [Stack](#stack)
+- [Setup](#setup)
+- [Local Configuration](#local-configuration)
+- [Applying RabbitMQ yaml files](#applying-rabbitmq-yaml-files)
+- [SQLServer Deployment](#sqlserver-deployment)
+- [Applying each project k8s files](#applying-each-project-k8s-files)
+- [Additional Ingress configuration](#additional_ingress_configuration)
+- [Making API calls](#making-api-calls)
+
 ## Stack
 
 - .NET
@@ -23,11 +34,11 @@ First you will need two install the following on your machine:
 
 After installing Docker Desktop, you need to go to settings and enable Kubernetes Cluster.
 
-## Running Locally
+## Local Configuration
 
 Once you have your Kubernetes Cluster up and running locally, you will have to reach to the k8s folder in the root and using the kubectl commands apply all files. Please note that the order of applying the files matters, so you must start it from the deployment files.
 
-## Applying RabbitMQ .yaml files
+## Applying RabbitMQ yaml files
 
 `kubectl apply -f rabbitmq-dpl.yaml`
 
@@ -149,12 +160,11 @@ To achieve it in Windows, go to `C:\Windows\System32\drivers\etc` and in the hos
 
 `127.0.0.1 acme.com`
 
-
 ## Making API calls
 
 After everything is set up following the instructions given above, you can call the following endpoints and watch in the terminal of each app the logs of the communication using MassTransit and other additional ones:
 
-1) First create a project to Inventory API:
+1. First create a project to Inventory API:
 
 ```
 curl --location 'http://acme.com/api/products' \
@@ -167,7 +177,7 @@ curl --location 'http://acme.com/api/products' \
 }'
 ```
 
-2) Second create sale using the Sales API:
+2. Second create sale using the Sales API:
 
 ```
 curl --location 'http://acme.com/api/sales' \
