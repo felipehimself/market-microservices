@@ -36,17 +36,18 @@ After installing Docker Desktop, you need to go to settings and enable Kubernete
 
 ## Local Configuration
 
-Once you have your Kubernetes Cluster up and running locally, you will have to reach to the k8s folder in the root and using the kubectl commands apply all files. Please note that the order of applying the files matters, so you must start it from the deployment files.
+Once you have your Kubernetes Cluster up and running locally, you will have to reach to the k8s folder in the root and using the kubectl commands apply all files. Please note that the order of applying the files matters.
 
 ## Applying RabbitMQ yaml files
+
+`kubectl apply -f rabbitmq-secret.yaml`
 
 `kubectl apply -f rabbitmq-dpl.yaml`
 
 `kubectl apply -f rabbitmq-svc.yaml`
 
-`kubectl apply -f rabbitmq-secret.yaml`
 
-You'll note that the secret file has some data that comes from the repository secret just to show off security. In order to run locally, these values must be replaced by the following ones:
+You'll notice that the secret file has some data that comes from the repository secret just to show off security. In order to run it locally, these values must be replaced by the following ones:
 
 - RabbitMQPassword: guest
 - RabbitMQUser: guest
@@ -59,7 +60,7 @@ Please note, the values below must be encoded to base64, as required by Kubernet
 
 ## SQLServer Deployment
 
-As I already had a SQLServer deployment running on my machine, the yaml file for it is not in the repo, but you can run both the deployment and service it using the yaml below:
+As I already had a SQLServer deployment running on my machine, the yaml file for it is not in the repo, but you can run both the deployment and service using the yaml below:
 
 ```
 apiVersion: apps/v1
@@ -129,7 +130,7 @@ spec:
       targetPort: 1433
 ```
 
-You'll notice the env values and not read from secret files but directly in Kubernets instead. You can achieve it by running in your terminal:
+You'll notice the env values are not read from secret files but directly in Kubernets instead. You can achieve it by running in your terminal:
 
 `kubectl create secret generic mssql --from-literal=SA_PASSWORD=[YOUR PASSWORD]`
 
@@ -154,7 +155,7 @@ Now you have to go in Market.Inventory and Market.Sales and apply all files insi
 
 ## Additional Ingress configuration
 
-In order to make API calls for the endpoint defined in each Ingress file, it's necessary to point your machine localhost to accept incoming request form acme.com - whic is just a random url I picked.
+In order to make API calls for the endpoint defined in each Ingress file, it's necessary to point your machine localhost to accept incoming request from acme.com - which is just a random url I picked.
 
 To achieve it in Windows, go to `C:\Windows\System32\drivers\etc` and in the host file add the following line:
 
@@ -164,7 +165,7 @@ To achieve it in Windows, go to `C:\Windows\System32\drivers\etc` and in the hos
 
 After everything is set up following the instructions given above, you can call the following endpoints and watch in the terminal of each app the logs of the communication using MassTransit and other additional ones:
 
-1. First create a project to Inventory API:
+1. First create a product in Inventory API:
 
 ```
 curl --location 'http://acme.com/api/products' \
